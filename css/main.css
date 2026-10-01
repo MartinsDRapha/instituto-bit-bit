@@ -1,0 +1,14 @@
+/* ==========================================================================
+   Instituto Bit a Bit — folha de estilos principal
+   Arquitetura: tokens → base → layout → componentes → utilitários
+   A ordem dos imports define a cascata: do mais genérico ao mais específico.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@700&display=swap");
+
+@import url("tokens.css");
+@import url("base.css");
+@import url("layout.css");
+@import url("components.css");
+@import url("spa.css");
+@import url("utilities.css");
