@@ -61,7 +61,11 @@ function desenhar({ novaNavegacao }) {
   const ancora = rota?.ancora && document.getElementById(rota.ancora);
   if (ancora) ancora.scrollIntoView();
   else window.scrollTo({ top: 0, behavior: 'instant' });
-  app.focus({ preventScroll: true });
+  // O foco vai para o título da nova página, que é lido por leitores de tela
+  // e indica a troca de conteúdo (WCAG 2.4.3).
+  const titulo = app.querySelector('h1');
+  if (titulo) titulo.tabIndex = -1;
+  (titulo ?? app).focus({ preventScroll: true });
 }
 
 function navegar() {

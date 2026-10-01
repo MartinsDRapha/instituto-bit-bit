@@ -317,6 +317,14 @@
     visibility: visible;
     transform: translateY(0);
   }
+
+  /* Fechado pela tecla Esc (js/ui/menu.js): permanece oculto mesmo com o
+     ponteiro ou o foco ainda sobre o item (WCAG 1.4.13). */
+  .nav__item.nav__item--recolhido:hover > .submenu,
+  .nav__item.nav__item--recolhido:focus-within > .submenu {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 /* Hero --------------------------------------------------------------------- */
@@ -324,7 +332,7 @@
 .hero {
   padding-block: var(--espaco-6);
   background:
-    radial-gradient(circle at 85% 20%, rgb(18 181 203 / 0.4), transparent 40%),
+    radial-gradient(circle at 85% 20%, rgb(18 181 203 / 0.2), transparent 40%),
     linear-gradient(135deg, var(--cor-primaria-900), var(--cor-primaria-500));
   color: var(--cor-neutra-0);
 }
@@ -335,7 +343,6 @@
 
 .hero__texto {
   font-size: var(--texto-lg);
-  opacity: 0.92;
 }
 
 .hero__acoes {

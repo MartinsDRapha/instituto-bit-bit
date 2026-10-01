@@ -8,8 +8,9 @@ const botao = document.getElementById('tema-botao');
 
 function atualizarBotao() {
   const escuro = raiz.dataset.tema === 'escuro';
+  // O rótulo é fixo ("Tema escuro"); o estado ligado/desligado é comunicado
+  // por aria-pressed, sem dupla sinalização para leitores de tela.
   botao.setAttribute('aria-pressed', String(escuro));
-  botao.setAttribute('aria-label', escuro ? 'Ativar tema claro' : 'Ativar tema escuro');
 }
 
 botao.addEventListener('click', () => {

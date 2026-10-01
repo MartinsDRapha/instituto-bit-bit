@@ -188,6 +188,7 @@
   overflow: hidden;
   background: var(--cor-realce);
   border-radius: var(--raio-pill);
+  box-shadow: inset 0 0 0 1px var(--cor-borda-forte);
 }
 
 .progresso__barra {
@@ -343,7 +344,7 @@ a.tag:hover,
 
 .campo__controle:focus {
   outline: none;
-  border-color: var(--cor-primaria-500);
+  border-color: var(--cor-foco);
   box-shadow: 0 0 0 3px var(--cor-primaria-suave);
 }
 
@@ -573,6 +574,6 @@ textarea.campo__controle {
 }
 
 .valores__opcao input:focus-visible + span {
-  outline: 3px solid var(--cor-secundaria-500);
+  outline: 3px solid var(--cor-foco);
   outline-offset: 2px;
 }

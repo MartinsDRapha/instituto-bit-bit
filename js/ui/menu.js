@@ -33,6 +33,24 @@ document.addEventListener('keydown', (evento) => {
   }
 });
 
+// Submenu suspenso (desktop): abre por CSS, com :hover e :focus-within. A
+// tecla Esc o recolhe sem exigir que o ponteiro saia; ele volta a abrir
+// normalmente depois que o ponteiro ou o foco deixam o item.
+document.querySelectorAll('.nav__item:has(> .submenu)').forEach((item) => {
+  const liberar = () => item.classList.remove('nav__item--recolhido');
+  item.addEventListener('mouseleave', liberar);
+  item.addEventListener('focusout', (evento) => {
+    if (!item.contains(evento.relatedTarget)) liberar();
+  });
+});
+
+document.addEventListener('keydown', (evento) => {
+  if (evento.key !== 'Escape') return;
+  document.querySelectorAll('.nav__item:has(> .submenu)').forEach((item) => {
+    if (item.matches(':hover, :focus-within')) item.classList.add('nav__item--recolhido');
+  });
+});
+
 // Clique fora do cabeçalho fecha o menu.
 document.addEventListener('click', (evento) => {
   if (estaAberto() && !evento.target.closest('.header')) fecharMenu();

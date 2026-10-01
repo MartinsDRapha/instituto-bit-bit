@@ -38,7 +38,7 @@
   --cor-neutra-900: #0f1626;
 
   /* Cores — feedback */
-  --cor-sucesso: #1f8a55;
+  --cor-sucesso: #136b40;
   --cor-sucesso-fundo: #e3f4ea;
   --cor-erro: #c0362c;
   --cor-erro-fundo: #fbe9e7;
@@ -56,7 +56,9 @@
   --cor-texto-medio: var(--cor-neutra-700);
   --cor-texto-suave: var(--cor-neutra-500);
   --cor-borda: var(--cor-neutra-100);
-  --cor-borda-forte: var(--cor-neutra-300);
+  --cor-borda-forte: #76829b; /* 3,9:1 sobre branco: limite de campos e tags (WCAG 1.4.11) */
+  --cor-foco: var(--cor-primaria-700);
+  --cor-foco-interno: var(--cor-neutra-0);
   --cor-link: var(--cor-primaria-700);
   --cor-link-hover: var(--cor-primaria-500);
   --cor-primaria-suave: var(--cor-primaria-100);
@@ -124,7 +126,9 @@
   --cor-texto-medio: #c3cbdb;
   --cor-texto-suave: #9aa5bd;
   --cor-borda: #26304a;
-  --cor-borda-forte: #45516f;
+  --cor-borda-forte: #6f7c9a;
+  --cor-foco: #5fd6e6;
+  --cor-foco-interno: #0b1120;
   --cor-link: #8db4f5;
   --cor-link-hover: #b9d1fa;
   --cor-primaria-suave: #1a2c57;
