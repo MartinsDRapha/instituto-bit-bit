@@ -22,7 +22,7 @@ Projeto acadêmico da disciplina de Desenvolvimento Front-End. A organização, 
 - JavaScript puro em módulos ES6
 - [Chart.js 4.4.4](https://www.chartjs.org/), carregado por CDN apenas na página de projetos
 
-- [esbuild](https://esbuild.github.io/), usado apenas no build de produção
+- [esbuild](https://esbuild.github.io/) e [sharp](https://sharp.pixelplumbing.com/), usados apenas no build de produção (minificação e otimização de imagens)
 
 ## Como executar
 
@@ -50,9 +50,9 @@ O build gera a pasta `dist/`, que é o que vai para a hospedagem, e `npm run pre
 |---|---|
 | JavaScript | Reúne os 20 módulos em um arquivo e minifica |
 | CSS | Reúne os 8 arquivos em um e minifica |
-| HTML | Coloca o `index.html` na raiz de `dist/`, ajusta os caminhos e remove comentários |
+| HTML | Coloca o `index.html` na raiz de `dist/`, ajusta os caminhos e minifica (remove comentários e espaços) |
 | Cache | Acrescenta `?v=<hash>` aos arquivos; o endereço muda quando o conteúdo muda |
-| Imagens | Copia apenas as que a página usa |
+| Imagens | Copia apenas as usadas; o PNG é recomprimido e convertido para WebP, servido por `<picture>` com o PNG como reserva |
 
 O Chart.js continua sendo carregado do CDN sob demanda e não entra no pacote.
 
