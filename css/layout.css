@@ -169,6 +169,12 @@
   height: 2.75rem;
 }
 
+/* No build de produção a imagem vem dentro de <picture> (WebP com reserva
+   em PNG); o invólucro não deve interferir no alinhamento. */
+.logo picture {
+  display: contents;
+}
+
 /* Menu hambúrguer: o JavaScript (js/ui/menu.js) alterna aria-expanded no
    botão e a classe .nav--aberta na navegação */
 .nav__botao {
