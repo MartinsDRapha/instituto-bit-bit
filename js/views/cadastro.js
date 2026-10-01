@@ -211,10 +211,15 @@ function preencher(form, dados) {
   }
 }
 
+// Um rascunho só vale se ao menos um campo tiver conteúdo (texto ou opção).
+const temConteudo = (rascunho) => Object.values(rascunho).some((valor) => valor?.length > 0);
+
 function guardarRascunho(form) {
   const valores = lerValores(form);
   const rascunho = Object.fromEntries(CAMPOS_DO_RASCUNHO.map((nome) => [nome, valores[nome]]));
-  salvarRascunho(rascunho);
+  // Se a pessoa apagou tudo, não sobra rascunho a recuperar.
+  if (temConteudo(rascunho)) salvarRascunho(rascunho);
+  else limparRascunho();
 }
 
 export const cadastro = {
@@ -230,7 +235,7 @@ export const cadastro = {
     const atualizarContador = () => (contador.textContent = form.elements.mensagem.value.length);
 
     const rascunho = lerRascunho();
-    if (rascunho) {
+    if (rascunho && temConteudo(rascunho)) {
       preencher(form, rascunho);
       atualizarContador();
       mostrarToast({ titulo: 'Rascunho recuperado', mensagem: 'Continuamos de onde você parou.' });
