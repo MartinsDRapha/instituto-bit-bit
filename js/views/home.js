@@ -3,6 +3,7 @@ import { PROJETOS, MENTORES_BASE } from '../dados.js';
 import { listarVoluntarios } from '../storage.js';
 import { formatarNumero } from '../formato.js';
 import { cardProjeto } from '../componentes/cardProjeto.js';
+import { foto } from '../componentes/foto.js';
 
 export const home = {
   titulo: 'Educação técnica em informática',
@@ -12,7 +13,18 @@ export const home = {
     const mentores = MENTORES_BASE + listarVoluntarios().length;
 
     return html`
-      <section class="hero">
+      <section class="hero hero--com-foto">
+        ${foto({
+          nome: 'hero',
+          larguras: [768, 1280, 1920],
+          tamanhos: '100vw',
+          largura: 1280,
+          altura: 853,
+          // Decorativa: o conteúdo do banner está no texto.
+          alt: '',
+          classe: 'hero__foto',
+          prioritaria: true,
+        })}
         <div class="container">
           <div class="hero__conteudo">
             <h1>Tecnologia se aprende bit a bit</h1>

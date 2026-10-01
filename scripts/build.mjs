@@ -14,8 +14,12 @@ import sharp from 'sharp';
 
 const RAIZ = path.resolve(import.meta.dirname, '..');
 const SAIDA = path.join(RAIZ, 'dist');
-const IMAGENS_COPIADAS = ['favicon.svg'];
 const IMAGENS_OTIMIZADAS = ['logo-simbolo.png'];
+// As fotos já chegam otimizadas por `npm run imagens` e são apenas copiadas;
+// a pasta imagens/originais/ fica de fora.
+const IMAGENS_COPIADAS = (await readdir(path.join(RAIZ, 'imagens'), { withFileTypes: true }))
+  .filter((item) => item.isFile() && !IMAGENS_OTIMIZADAS.includes(item.name))
+  .map((item) => item.name);
 
 const origem = (...partes) => path.join(RAIZ, ...partes);
 const destino = (...partes) => path.join(SAIDA, ...partes);

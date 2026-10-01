@@ -2,6 +2,7 @@ import { html, bruto } from '../templates.js';
 import { CATEGORIAS, STATUS } from '../dados.js';
 import { totalDoado } from '../storage.js';
 import { formatarMoeda } from '../formato.js';
+import { foto } from './foto.js';
 
 // Soma o valor inicial do projeto às doações registradas neste navegador.
 export function situacaoDoProjeto(projeto) {
@@ -21,7 +22,16 @@ export function cardProjeto(projeto, { titulo = 'h3' } = {}) {
   return html`
     <article class="card">
       <div class="card__midia ${categoria.midia}">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="${categoria.icone}"/></svg>
+        ${foto({
+          nome: `projeto-${projeto.id}`,
+          larguras: [400, 800],
+          // Largura ocupada pelo card em cada faixa de tela (ver o grid).
+          tamanhos: '(min-width: 1200px) 380px, (min-width: 768px) 50vw, 100vw',
+          largura: 800,
+          altura: 450,
+          alt: projeto.fotoAlt,
+          classe: 'card__foto',
+        })}
       </div>
       <div class="card__corpo">
         <span class="badge ${categoria.badge}">${categoria.nome}</span>

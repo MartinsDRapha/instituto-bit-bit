@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/servidor.mjs . 5500",
+    "imagens": "node scripts/imagens.mjs",
     "build": "node scripts/build.mjs",
     "preview": "node scripts/servidor.mjs dist 4173"
   },
