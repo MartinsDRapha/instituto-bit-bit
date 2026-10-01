@@ -117,18 +117,21 @@
   fill: currentColor;
 }
 
-/* Mostra a lua no tema claro e o sol no escuro: o ícone indica o destino */
-.tema-botao__sol,
-[data-tema="escuro"] .tema-botao__lua {
+/* O ícone indica o próximo tema do ciclo: claro -> escuro -> alto contraste */
+.tema-botao svg {
   display: none;
 }
 
-[data-tema="escuro"] .tema-botao__sol {
+:root:not([data-tema]) .tema-botao__lua,
+[data-tema="claro"] .tema-botao__lua,
+[data-tema="escuro"] .tema-botao__contraste,
+[data-tema="contraste"] .tema-botao__sol {
   display: block;
 }
 
-/* O símbolo do logotipo tem fundo branco; no tema escuro vira um selo */
-[data-tema="escuro"] .logo__icone {
+/* O símbolo do logotipo tem fundo branco; nos temas escuros vira um selo */
+[data-tema="escuro"] .logo__icone,
+[data-tema="contraste"] .logo__icone {
   padding: 2px;
   background: #ffffff;
   border-radius: var(--raio-sm);

@@ -1,0 +1,108 @@
+/* ==========================================================================
+   Tema de alto contraste — ativado por data-tema="contraste" (js/ui/tema.js)
+   ou, na primeira visita, pela preferência do sistema (prefers-contrast: more).
+   Fundo preto, texto branco e destaques em amarelo e ciano: todas as
+   combinações de texto ficam acima de 7:1 (WCAG 1.4.6, nível AAA).
+   ========================================================================== */
+
+:root[data-tema="contraste"] {
+  --cor-fundo: #000000;
+  --cor-superficie: #000000;
+  --cor-realce: #1a1a1a;
+  --cor-texto: #ffffff;
+  --cor-texto-medio: #ffffff;
+  --cor-texto-suave: #e0e0e0;
+  --cor-borda: #ffffff;
+  --cor-borda-forte: #ffffff;
+  --cor-link: #ffff00;
+  --cor-link-hover: #ffffff;
+  --cor-primaria-suave: #1a1a1a;
+  --cor-secundaria-500: #00ffff;
+  --cor-secundaria-suave: #000000;
+  --cor-secundaria-texto: #00ffff;
+  --cor-destaque-suave: #000000;
+  --cor-destaque-texto: #ff9dff;
+  --cor-foco: #00ffff;
+  --cor-foco-interno: #000000;
+
+  --cor-sucesso: #00ff7f;
+  --cor-sucesso-fundo: #000000;
+  --cor-erro: #ff6b6b;
+  --cor-erro-fundo: #000000;
+  --cor-aviso: #ffd700;
+  --cor-aviso-fundo: #000000;
+  --cor-info: #7fd4ff;
+  --cor-info-fundo: #000000;
+
+  --sombra-sm: none;
+  --sombra-md: none;
+  --sombra-lg: none;
+
+  color-scheme: dark;
+}
+
+/* Sem sombras e gradientes, a separação entre áreas passa a ser feita por
+   bordas sólidas. */
+[data-tema="contraste"] .header {
+  border-bottom: 2px solid #ffffff;
+}
+
+[data-tema="contraste"] .hero,
+[data-tema="contraste"] .secao--escura,
+[data-tema="contraste"] .footer {
+  background: #000000;
+  color: #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+[data-tema="contraste"] .footer {
+  border-top: 2px solid #ffffff;
+  border-bottom: 0;
+}
+
+[data-tema="contraste"] .card__midia {
+  background: #000000;
+  border-bottom: 1px solid #ffffff;
+}
+
+/* Ações principais: amarelo sobre preto invertido (texto preto, 19,6:1) */
+[data-tema="contraste"] .btn--primario,
+[data-tema="contraste"] .btn--secundario,
+[data-tema="contraste"] .tag--ativa,
+[data-tema="contraste"] a.tag:hover {
+  background: #ffff00;
+  border-color: #ffff00;
+  color: #000000;
+}
+
+[data-tema="contraste"] .btn--primario:hover,
+[data-tema="contraste"] .btn--secundario:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #000000;
+}
+
+[data-tema="contraste"] .progresso__barra {
+  background: #ffff00;
+}
+
+/* Etiquetas, alertas e caixas flutuantes ganham contorno */
+[data-tema="contraste"] .badge,
+[data-tema="contraste"] .alerta {
+  border: 1px solid currentColor;
+}
+
+[data-tema="contraste"] .alerta {
+  border-left-width: 4px;
+  color: #ffffff;
+}
+
+[data-tema="contraste"] .modal__caixa,
+[data-tema="contraste"] .toast,
+[data-tema="contraste"] .submenu {
+  border: 2px solid #ffffff;
+}
+
+[data-tema="contraste"] .nav__link--ativo {
+  text-decoration: underline;
+}
