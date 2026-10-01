@@ -77,6 +77,23 @@ Tudo fica no `localStorage`, com o prefixo `bitabit:`. Nada é enviado a servido
 
 CPF, telefone e endereço são validados, mas não são gravados.
 
+## Acessibilidade
+
+O projeto segue as diretrizes da WCAG 2.1, nível AA.
+
+| Aspecto | Como é atendido |
+|---|---|
+| Contraste (1.4.3, 1.4.11) | Texto com no mínimo 4,5:1 e bordas de campos, tags e foco com no mínimo 3:1, nos temas claro e escuro |
+| Teclado (2.1.1, 2.1.2) | Tudo é operável por teclado; o modal prende o foco e fecha com Esc; o submenu fecha com Esc |
+| Foco (2.4.3, 2.4.7) | Indicador em dois tons, visível em fundos claros e escuros; a troca de rota leva o foco ao título da página |
+| Navegação (2.4.1, 2.4.2) | Link "Pular para o conteúdo" e título da aba atualizado a cada rota |
+| Formulários (1.3.1, 3.3.1, 3.3.2) | Rótulos em todos os campos, obrigatoriedade indicada, erro em texto ligado ao campo e resumo de erros no envio |
+| Nome e função (4.1.2) | Botões com nome acessível, barra de arrecadação com `role="progressbar"`, estados com `aria-expanded`, `aria-pressed`, `aria-invalid` e `aria-current` |
+| Conteúdo não textual (1.1.1) | Ícones decorativos ocultos de leitores de tela; o gráfico tem uma tabela equivalente |
+| Tempo e movimento (2.2.1, 2.3.3) | Notificações pausam com o ponteiro ou o foco sobre elas; animações respeitam `prefers-reduced-motion` |
+
+Os contrastes foram calculados pela fórmula da WCAG. Recomenda-se complementar com o Lighthouse e a extensão axe DevTools, e com um teste em leitor de tela (NVDA ou VoiceOver).
+
 ## Manutenção
 
 - **Novo projeto**: acrescente um objeto ao array `PROJETOS` em `js/dados.js`.
