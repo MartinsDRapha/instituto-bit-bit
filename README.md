@@ -131,29 +131,69 @@ Os contrastes foram calculados pela fórmula da WCAG. Recomenda-se complementar 
 - **Nova página**: crie uma view em `js/views/` e registre a rota em `js/router.js`.
 - **Nova regra de validação**: edite o objeto `REGRAS` em `js/validacao.js`.
 
-## Fluxo de trabalho com Git
+## Fluxo de trabalho com Git (GitFlow)
 
-A branch `main` contém sempre uma versão estável. Nenhuma alteração é feita diretamente nela.
+O repositório segue o modelo GitFlow, com duas branches permanentes e três tipos de branches temporárias.
 
-1. Crie uma branch a partir da `main`, com um prefixo que indique o tipo de mudança:
+| Branch | Papel | Nasce de | É mesclada em |
+|---|---|---|---|
+| `main` | Versões de lançamento. Cada merge é uma versão publicada e recebe uma tag (`v1.0.0`) | — | — |
+| `develop` | Integração do desenvolvimento em andamento | `main` | — |
+| `feature/nome` | Uma nova funcionalidade ou melhoria | `develop` | `develop` |
+| `release/x.y.z` | Preparação de uma versão: ajuste de versão, changelog e últimos acertos | `develop` | `main` e `develop` |
+| `hotfix/nome` | Correção urgente de algo que já está em produção | `main` | `main` e `develop` |
 
-   | Prefixo | Uso | Exemplo |
-   |---|---|---|
-   | `feat/` | Nova funcionalidade | `feat/build-producao` |
-   | `fix/` | Correção | `fix/acessibilidade-wcag` |
-   | `docs/` | Documentação | `docs/fluxo-de-contribuicao` |
+### Nova funcionalidade
 
-2. Faça commits pequenos, um por assunto, no padrão [Conventional Commits](https://www.conventionalcommits.org/pt-br/):
+```bash
+git checkout develop
+git checkout -b feature/nome-da-funcionalidade
+```
 
-   ```text
-   tipo(escopo): descrição no imperativo, em minúsculas
-   ```
+Faça os commits, envie a branch e abra um pull request com base em `develop`.
 
-   Tipos usados: `feat`, `fix`, `docs`, `perf`, `build` e `chore`. Exemplo: `fix(a11y): corrige contraste de cores e indicador de foco`.
+### Lançamento de versão
 
-3. Envie a branch e abra um pull request para a `main`, descrevendo o que mudou, por que mudou e como testar.
-4. Revise o diff antes de aprovar: o site abre sem erros no console, a navegação por teclado funciona e o build conclui.
-5. Faça o merge e apague a branch.
+```bash
+git checkout develop
+git checkout -b release/1.1.0
+```
+
+Atualize a versão no `package.json` e o `CHANGELOG.md`, abra um pull request com base em `main` e, após o merge, crie a tag e leve a `main` de volta para a `develop`:
+
+```bash
+git checkout main && git pull
+git tag -a v1.1.0 -m "Versão 1.1.0"
+git push origin v1.1.0
+git checkout develop && git merge --no-ff main && git push
+```
+
+O merge na `main` dispara o deploy automático.
+
+### Correção urgente
+
+```bash
+git checkout main
+git checkout -b hotfix/nome-da-correcao
+```
+
+Corrija, aumente a versão de correção (`1.0.0` para `1.0.1`), abra um pull request com base em `main` e, após o merge, crie a tag e leve a correção para a `develop`, como no lançamento.
+
+### Commits
+
+As mensagens seguem o padrão [Conventional Commits](https://www.conventionalcommits.org/pt-br/):
+
+```text
+tipo(escopo): descrição no imperativo, em minúsculas
+```
+
+Tipos usados: `feat`, `fix`, `docs`, `perf`, `build`, `ci` e `chore`. Exemplo: `fix(a11y): corrige contraste de cores e indicador de foco`.
+
+### Revisão
+
+Antes de aprovar um pull request, confira o diff e verifique se o site abre sem erros no console, se a navegação por teclado funciona e se `npm run build` conclui.
+
+As versões seguem o [versionamento semântico](https://semver.org/lang/pt-BR/). Os primeiros commits do projeto usaram branches com os prefixos `feat/`, `fix/`, `docs/` e `ci/`, mescladas direto na `main`; o GitFlow foi adotado a partir da versão 1.0.0.
 
 ## Autoria
 
