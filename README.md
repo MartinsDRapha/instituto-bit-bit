@@ -2,6 +2,8 @@
 
 Plataforma web de uma ONG fictícia de educação técnica gratuita em informática. Permite divulgar projetos, registrar doações e cadastrar voluntários.
 
+**Site publicado:** https://martinsdrapha.github.io/instituto-bit-bit/
+
 Projeto acadêmico da disciplina de Desenvolvimento Front-End. A organização, os projetos, os números e os contatos são fictícios.
 
 ## Funcionalidades
@@ -27,8 +29,8 @@ Projeto acadêmico da disciplina de Desenvolvimento Front-End. A organização, 
 Requer [Node.js](https://nodejs.org/) 20 ou superior. Os módulos JavaScript exigem um servidor HTTP; abrir o arquivo com duplo clique não funciona.
 
 ```bash
-git clone <endereço-do-repositório>
-cd <pasta-do-projeto>
+git clone https://github.com/MartinsDRapha/instituto-bit-bit.git
+cd instituto-bit-bit
 npm install
 npm run dev
 ```
@@ -84,6 +86,12 @@ O Chart.js continua sendo carregado do CDN sob demanda e não entra no pacote.
     ├── componentes/        card de projeto, doação e gráfico
     └── ui/                 modal, toast, menu e tema
 ```
+
+## Deploy
+
+O site é publicado no GitHub Pages pelo workflow `.github/workflows/deploy.yml`. A cada alteração na branch `main`, o GitHub Actions instala as dependências, roda `npm run build` e publica a pasta `dist/`. Não há passo manual: basta mesclar um pull request na `main`.
+
+O andamento de cada publicação fica na aba Actions do repositório.
 
 ## Dados gravados no navegador
 
