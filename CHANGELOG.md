@@ -2,6 +2,12 @@
 
 Todas as mudanças relevantes do projeto são registradas aqui. O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e as versões seguem o [versionamento semântico](https://semver.org/lang/pt-BR/).
 
+## [1.0.1] - 2026-09-30
+
+### Corrigido
+
+- O aviso "Rascunho recuperado" aparecia no cadastro mesmo quando o formulário havia sido esvaziado
+
 ## [1.0.0] - 2026-09-30
 
 Primeira versão publicada.
@@ -22,4 +28,5 @@ Primeira versão publicada.
 
 - Conformidade com a WCAG 2.1 nível AA: contraste, foco visível, navegação por teclado, nomes acessíveis e mensagens de erro em texto
 
+[1.0.1]: https://github.com/MartinsDRapha/instituto-bit-bit/releases/tag/v1.0.1
 [1.0.0]: https://github.com/MartinsDRapha/instituto-bit-bit/releases/tag/v1.0.0
