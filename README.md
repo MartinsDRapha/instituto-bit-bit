@@ -20,21 +20,39 @@ Projeto acadêmico da disciplina de Desenvolvimento Front-End. A organização, 
 - JavaScript puro em módulos ES6
 - [Chart.js 4.4.4](https://www.chartjs.org/), carregado por CDN apenas na página de projetos
 
-Não há etapa de build nem dependências para instalar.
+- [esbuild](https://esbuild.github.io/), usado apenas no build de produção
 
 ## Como executar
 
-Os módulos JavaScript exigem um servidor HTTP; abrir o arquivo com duplo clique não funciona.
+Requer [Node.js](https://nodejs.org/) 20 ou superior. Os módulos JavaScript exigem um servidor HTTP; abrir o arquivo com duplo clique não funciona.
 
-1. Clone o repositório e entre na pasta.
-2. Inicie um servidor estático na raiz do projeto. Com Python:
+```bash
+git clone <endereço-do-repositório>
+cd <pasta-do-projeto>
+npm install
+npm run dev
+```
 
-   ```bash
-   python -m http.server 5500
-   ```
+Acesse `http://localhost:5500/html/`.
 
-   Ou use a extensão Live Server do VS Code.
-3. Acesse `http://localhost:5500/html/`.
+## Build de produção
+
+```bash
+npm run build
+npm run preview
+```
+
+O build gera a pasta `dist/`, que é o que vai para a hospedagem, e `npm run preview` a serve em `http://localhost:4173` para conferência.
+
+| Etapa | O que faz |
+|---|---|
+| JavaScript | Reúne os 20 módulos em um arquivo e minifica |
+| CSS | Reúne os 7 arquivos em um e minifica |
+| HTML | Coloca o `index.html` na raiz de `dist/`, ajusta os caminhos e remove comentários |
+| Cache | Acrescenta `?v=<hash>` aos arquivos; o endereço muda quando o conteúdo muda |
+| Imagens | Copia apenas as que a página usa |
+
+O Chart.js continua sendo carregado do CDN sob demanda e não entra no pacote.
 
 ## Estrutura
 
@@ -50,6 +68,9 @@ Os módulos JavaScript exigem um servidor HTTP; abrir o arquivo com duplo clique
 │   ├── spa.css             estados controlados por JavaScript
 │   └── utilities.css       classes auxiliares
 ├── imagens/
+├── scripts/
+│   ├── build.mjs           gera a versão de produção em dist/
+│   └── servidor.mjs        servidor estático para desenvolvimento e preview
 └── js/
     ├── main.js             ponto de entrada
     ├── router.js           navegação entre rotas
