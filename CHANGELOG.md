@@ -2,6 +2,24 @@
 
 Todas as mudanças relevantes do projeto são registradas aqui. O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e as versões seguem o [versionamento semântico](https://semver.org/lang/pt-BR/).
 
+## [1.1.0] - 2026-10-01
+
+### Adicionado
+
+- Fotos no banner da página inicial e nos cards de projeto, em WebP com várias larguras, JPEG de reserva e carregamento sob demanda
+- Tema de alto contraste, no alternador de tema e por preferência do sistema (`prefers-contrast: more`)
+- Comando `npm run imagens`, que gera as versões otimizadas das fotos
+- Créditos das imagens no README
+
+### Alterado
+
+- Build: HTML minificado por completo e logotipo convertido para WebP
+- As notificações passam a vir antes do rodapé na ordem de foco do teclado
+
+### Removido
+
+- Imagem `logo-instituto.png`, que não era usada por nenhuma página
+
 ## [1.0.1] - 2026-09-30
 
 ### Corrigido
@@ -28,5 +46,6 @@ Primeira versão publicada.
 
 - Conformidade com a WCAG 2.1 nível AA: contraste, foco visível, navegação por teclado, nomes acessíveis e mensagens de erro em texto
 
+[1.1.0]: https://github.com/MartinsDRapha/instituto-bit-bit/releases/tag/v1.1.0
 [1.0.1]: https://github.com/MartinsDRapha/instituto-bit-bit/releases/tag/v1.0.1
 [1.0.0]: https://github.com/MartinsDRapha/instituto-bit-bit/releases/tag/v1.0.0
