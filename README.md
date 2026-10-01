@@ -12,7 +12,7 @@ Projeto acadêmico da disciplina de Desenvolvimento Front-End. A organização, 
 - **Projetos** com filtro por área, barra de arrecadação e gráfico por área de atuação
 - **Doação simulada**, gravada no navegador e refletida nas barras e no gráfico
 - **Cadastro de voluntários** com validação (CPF, idade mínima, e-mail, telefone, CEP), máscaras e rascunho automático
-- **Tema claro e escuro**, com a preferência salva
+- **Temas claro, escuro e de alto contraste**, com a preferência salva
 - **Layout responsivo** mobile-first, com grid de 12 colunas e cinco breakpoints
 
 ## Tecnologias
@@ -22,7 +22,7 @@ Projeto acadêmico da disciplina de Desenvolvimento Front-End. A organização, 
 - JavaScript puro em módulos ES6
 - [Chart.js 4.4.4](https://www.chartjs.org/), carregado por CDN apenas na página de projetos
 
-- [esbuild](https://esbuild.github.io/), usado apenas no build de produção
+- [esbuild](https://esbuild.github.io/) e [sharp](https://sharp.pixelplumbing.com/), usados apenas no build de produção (minificação e otimização de imagens)
 
 ## Como executar
 
@@ -49,12 +49,22 @@ O build gera a pasta `dist/`, que é o que vai para a hospedagem, e `npm run pre
 | Etapa | O que faz |
 |---|---|
 | JavaScript | Reúne os 20 módulos em um arquivo e minifica |
-| CSS | Reúne os 7 arquivos em um e minifica |
-| HTML | Coloca o `index.html` na raiz de `dist/`, ajusta os caminhos e remove comentários |
+| CSS | Reúne os 8 arquivos em um e minifica |
+| HTML | Coloca o `index.html` na raiz de `dist/`, ajusta os caminhos e minifica (remove comentários e espaços) |
 | Cache | Acrescenta `?v=<hash>` aos arquivos; o endereço muda quando o conteúdo muda |
-| Imagens | Copia apenas as que a página usa |
+| Imagens | Copia as fotos já otimizadas; o logotipo em PNG é recomprimido e convertido para WebP, servido por `<picture>` com o PNG como reserva |
 
 O Chart.js continua sendo carregado do CDN sob demanda e não entra no pacote.
+
+### Fotos
+
+As fotos originais ficam em `imagens/originais/`. Ao adicionar ou trocar uma, gere as versões otimizadas:
+
+```bash
+npm run imagens
+```
+
+Cada foto sai em WebP, em mais de uma largura, e em um JPEG de reserva. Na página, elas usam `<picture>` com `srcset` e `sizes`, para o navegador baixar o tamanho adequado à tela (um card em celular ou desktop comum recebe um arquivo de cerca de 10 kB). As fotos dos cards têm `loading="lazy"`; a do banner é pré-carregada com prioridade alta. Todas declaram largura e altura, o que evita saltos de layout.
 
 ## Estrutura
 
@@ -68,10 +78,12 @@ O Chart.js continua sendo carregado do CDN sob demanda e não entra no pacote.
 │   ├── layout.css          grid, cabeçalho, rodapé
 │   ├── components.css      botões, cards, formulários, modal, toast
 │   ├── spa.css             estados controlados por JavaScript
+│   ├── alto-contraste.css  tema de alto contraste
 │   └── utilities.css       classes auxiliares
 ├── imagens/
 ├── scripts/
 │   ├── build.mjs           gera a versão de produção em dist/
+│   ├── imagens.mjs         gera as versões otimizadas das fotos
 │   └── servidor.mjs        servidor estático para desenvolvimento e preview
 └── js/
     ├── main.js             ponto de entrada
@@ -112,7 +124,7 @@ O projeto segue as diretrizes da WCAG 2.1, nível AA.
 
 | Aspecto | Como é atendido |
 |---|---|
-| Contraste (1.4.3, 1.4.11) | Texto com no mínimo 4,5:1 e bordas de campos, tags e foco com no mínimo 3:1, nos temas claro e escuro |
+| Contraste (1.4.3, 1.4.11) | Texto com no mínimo 4,5:1 e bordas de campos, tags e foco com no mínimo 3:1, nos temas claro e escuro. O tema de alto contraste (preto, branco, amarelo e ciano) mantém o texto acima de 7:1 e é aplicado automaticamente quando o sistema pede mais contraste (`prefers-contrast: more`) |
 | Teclado (2.1.1, 2.1.2) | Tudo é operável por teclado; o modal prende o foco e fecha com Esc; o submenu fecha com Esc |
 | Foco (2.4.3, 2.4.7) | Indicador em dois tons, visível em fundos claros e escuros; a troca de rota leva o foco ao título da página |
 | Navegação (2.4.1, 2.4.2) | Link "Pular para o conteúdo" e título da aba atualizado a cada rota |
@@ -194,6 +206,22 @@ Tipos usados: `feat`, `fix`, `docs`, `perf`, `build`, `ci` e `chore`. Exemplo: `
 Antes de aprovar um pull request, confira o diff e verifique se o site abre sem erros no console, se a navegação por teclado funciona e se `npm run build` conclui.
 
 As versões seguem o [versionamento semântico](https://semver.org/lang/pt-BR/). Os primeiros commits do projeto usaram branches com os prefixos `feat/`, `fix/`, `docs/` e `ci/`, mescladas direto na `main`; o GitFlow foi adotado a partir da versão 1.0.0.
+
+## Créditos das imagens
+
+Fotos do [Unsplash](https://unsplash.com/), usadas sob a [licença Unsplash](https://unsplash.com/license).
+
+| Uso | Autor |
+|---|---|
+| Banner da página inicial | [Poddar Group of Institutions](https://unsplash.com/photos/ereEoYDIl20) |
+| Primeiro Código | [Mohammad Rahmani](https://unsplash.com/photos/oXlXu2qukGE) |
+| Dev Delas | [ThisisEngineering](https://unsplash.com/photos/64YrPKiguAE) |
+| Bancada Aberta | [JESHOOTS.COM](https://unsplash.com/photos/sMKUYIasyDM) |
+| Recicla Tech | [Mert Kahveci](https://unsplash.com/photos/SsDZRqcCfSo) |
+| Conecta 60+ | [Vitaly Gariev](https://unsplash.com/photos/cMsdRjEApeo) |
+| Lab na Escola | [RUT MIIT](https://unsplash.com/photos/Y6hwl3U1oiU) |
+
+As pessoas retratadas não têm relação com o projeto, que é fictício.
 
 ## Autoria
 

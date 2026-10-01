@@ -169,6 +169,12 @@
   height: 2.75rem;
 }
 
+/* No build de produção a imagem vem dentro de <picture> (WebP com reserva
+   em PNG); o invólucro não deve interferir no alinhamento. */
+.logo picture {
+  display: contents;
+}
+
 /* Menu hambúrguer: o JavaScript (js/ui/menu.js) alterna aria-expanded no
    botão e a classe .nav--aberta na navegação */
 .nav__botao {
@@ -354,6 +360,32 @@
 
 .hero--compacto {
   padding-block: var(--espaco-4);
+}
+
+/* Banner com foto: a imagem fica atrás de uma camada azul que garante o
+   contraste do texto branco (no mínimo 5:1, mesmo sobre áreas claras da foto). */
+.hero--com-foto {
+  position: relative;
+  isolation: isolate;
+  background: var(--cor-primaria-900);
+}
+
+.hero__foto {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% center;
+}
+
+.hero--com-foto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(100deg, rgb(10 31 77 / 0.94) 20%, rgb(21 67 160 / 0.8));
 }
 
 @media (min-width: 992px) {
