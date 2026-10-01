@@ -1,0 +1,46 @@
+/* ==========================================================================
+   Utilitários — classes de propósito único (prefixo u-)
+   ========================================================================== */
+
+.u-visualmente-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.u-pular-conteudo {
+  position: absolute;
+  top: -100%;
+  left: var(--espaco-2);
+  z-index: calc(var(--z-modal) + 1);
+  padding: var(--espaco-1) var(--espaco-2);
+  background: var(--cor-neutra-900);
+  color: var(--cor-neutra-0);
+  border-radius: var(--raio-md);
+}
+
+.u-pular-conteudo:focus {
+  top: var(--espaco-1);
+  color: var(--cor-neutra-0);
+}
+
+.u-texto-centro { text-align: center; }
+.u-texto-suave  { color: var(--cor-texto-suave); }
+
+.u-mt-0 { margin-top: 0; }
+.u-mt-2 { margin-top: var(--espaco-2); }
+.u-mt-4 { margin-top: var(--espaco-4); }
+.u-mb-0 { margin-bottom: 0; }
+.u-mb-2 { margin-bottom: var(--espaco-2); }
+.u-mb-4 { margin-bottom: var(--espaco-4); }
+
+.u-flex-centro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espaco-2);
+}
