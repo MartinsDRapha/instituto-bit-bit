@@ -12,7 +12,7 @@ Projeto acadêmico da disciplina de Desenvolvimento Front-End. A organização, 
 - **Projetos** com filtro por área, barra de arrecadação e gráfico por área de atuação
 - **Doação simulada**, gravada no navegador e refletida nas barras e no gráfico
 - **Cadastro de voluntários** com validação (CPF, idade mínima, e-mail, telefone, CEP), máscaras e rascunho automático
-- **Tema claro e escuro**, com a preferência salva
+- **Temas claro, escuro e de alto contraste**, com a preferência salva
 - **Layout responsivo** mobile-first, com grid de 12 colunas e cinco breakpoints
 
 ## Tecnologias
@@ -49,7 +49,7 @@ O build gera a pasta `dist/`, que é o que vai para a hospedagem, e `npm run pre
 | Etapa | O que faz |
 |---|---|
 | JavaScript | Reúne os 20 módulos em um arquivo e minifica |
-| CSS | Reúne os 7 arquivos em um e minifica |
+| CSS | Reúne os 8 arquivos em um e minifica |
 | HTML | Coloca o `index.html` na raiz de `dist/`, ajusta os caminhos e remove comentários |
 | Cache | Acrescenta `?v=<hash>` aos arquivos; o endereço muda quando o conteúdo muda |
 | Imagens | Copia apenas as que a página usa |
@@ -68,6 +68,7 @@ O Chart.js continua sendo carregado do CDN sob demanda e não entra no pacote.
 │   ├── layout.css          grid, cabeçalho, rodapé
 │   ├── components.css      botões, cards, formulários, modal, toast
 │   ├── spa.css             estados controlados por JavaScript
+│   ├── alto-contraste.css  tema de alto contraste
 │   └── utilities.css       classes auxiliares
 ├── imagens/
 ├── scripts/
@@ -112,7 +113,7 @@ O projeto segue as diretrizes da WCAG 2.1, nível AA.
 
 | Aspecto | Como é atendido |
 |---|---|
-| Contraste (1.4.3, 1.4.11) | Texto com no mínimo 4,5:1 e bordas de campos, tags e foco com no mínimo 3:1, nos temas claro e escuro |
+| Contraste (1.4.3, 1.4.11) | Texto com no mínimo 4,5:1 e bordas de campos, tags e foco com no mínimo 3:1, nos temas claro e escuro. O tema de alto contraste (preto, branco, amarelo e ciano) mantém o texto acima de 7:1 e é aplicado automaticamente quando o sistema pede mais contraste (`prefers-contrast: more`) |
 | Teclado (2.1.1, 2.1.2) | Tudo é operável por teclado; o modal prende o foco e fecha com Esc; o submenu fecha com Esc |
 | Foco (2.4.3, 2.4.7) | Indicador em dois tons, visível em fundos claros e escuros; a troca de rota leva o foco ao título da página |
 | Navegação (2.4.1, 2.4.2) | Link "Pular para o conteúdo" e título da aba atualizado a cada rota |
