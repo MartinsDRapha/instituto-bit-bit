@@ -4,7 +4,8 @@
    A ordem dos imports define a cascata: do mais genérico ao mais específico.
    ========================================================================== */
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@700&display=swap");
+/* As fontes (Inter e Poppins) são carregadas por <link> no HTML, com
+   preconnect, para não encadear um download atrás do outro. */
 
 @import url("tokens.css");
 @import url("base.css");
