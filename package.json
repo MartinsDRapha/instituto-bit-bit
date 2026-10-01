@@ -1,6 +1,6 @@
 {
   "name": "instituto-bit-a-bit",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Plataforma web de uma ONG fictícia de educação técnica em informática",
   "private": true,
   "type": "module",
