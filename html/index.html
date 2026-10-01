@@ -66,6 +66,11 @@
     </noscript>
   </main>
 
+  <!-- Notificações: ficam logo após o conteúdo na ordem do HTML para que o
+       botão de fechar seja alcançado por Tab antes do rodapé. A posição na
+       tela é fixa, definida em CSS. -->
+  <div class="toast-area" id="toast-area" role="region" aria-label="Notificações" aria-live="polite"></div>
+
   <footer class="footer">
     <div class="container">
       <div class="grid">
@@ -118,6 +123,5 @@
     </div>
   </div>
 
-  <div class="toast-area" id="toast-area" aria-live="polite"></div>
 </body>
 </html>
