@@ -123,6 +123,30 @@ Os contrastes foram calculados pela fórmula da WCAG. Recomenda-se complementar 
 - **Nova página**: crie uma view em `js/views/` e registre a rota em `js/router.js`.
 - **Nova regra de validação**: edite o objeto `REGRAS` em `js/validacao.js`.
 
+## Fluxo de trabalho com Git
+
+A branch `main` contém sempre uma versão estável. Nenhuma alteração é feita diretamente nela.
+
+1. Crie uma branch a partir da `main`, com um prefixo que indique o tipo de mudança:
+
+   | Prefixo | Uso | Exemplo |
+   |---|---|---|
+   | `feat/` | Nova funcionalidade | `feat/build-producao` |
+   | `fix/` | Correção | `fix/acessibilidade-wcag` |
+   | `docs/` | Documentação | `docs/fluxo-de-contribuicao` |
+
+2. Faça commits pequenos, um por assunto, no padrão [Conventional Commits](https://www.conventionalcommits.org/pt-br/):
+
+   ```text
+   tipo(escopo): descrição no imperativo, em minúsculas
+   ```
+
+   Tipos usados: `feat`, `fix`, `docs`, `perf`, `build` e `chore`. Exemplo: `fix(a11y): corrige contraste de cores e indicador de foco`.
+
+3. Envie a branch e abra um pull request para a `main`, descrevendo o que mudou, por que mudou e como testar.
+4. Revise o diff antes de aprovar: o site abre sem erros no console, a navegação por teclado funciona e o build conclui.
+5. Faça o merge e apague a branch.
+
 ## Autoria
 
 Raphaela Fernandes
