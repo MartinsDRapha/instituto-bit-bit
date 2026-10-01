@@ -324,7 +324,7 @@
 .hero {
   padding-block: var(--espaco-6);
   background:
-    radial-gradient(circle at 85% 20%, rgb(18 181 203 / 0.4), transparent 40%),
+    radial-gradient(circle at 85% 20%, rgb(18 181 203 / 0.2), transparent 40%),
     linear-gradient(135deg, var(--cor-primaria-900), var(--cor-primaria-500));
   color: var(--cor-neutra-0);
 }
@@ -335,7 +335,6 @@
 
 .hero__texto {
   font-size: var(--texto-lg);
-  opacity: 0.92;
 }
 
 .hero__acoes {

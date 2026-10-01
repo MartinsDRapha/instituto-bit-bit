@@ -5,8 +5,11 @@
 
 /* Transição entre páginas -------------------------------------------------- */
 
-#conteudo:focus {
+/* Foco programático após a troca de rota: não precisa de contorno */
+#conteudo:focus,
+#conteudo h1:focus {
   outline: none;
+  box-shadow: none;
 }
 
 .pagina-entrada {

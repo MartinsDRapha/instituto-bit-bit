@@ -81,9 +81,12 @@ textarea {
   color: inherit;
 }
 
+/* Indicador de foco em dois tons: o anel interno garante contraste também
+   sobre fundos coloridos, como o banner e o rodapé (WCAG 2.4.7 e 1.4.11). */
 :focus-visible {
-  outline: 3px solid var(--cor-secundaria-500);
+  outline: 3px solid var(--cor-foco);
   outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--cor-foco-interno);
 }
 
 ::selection {
