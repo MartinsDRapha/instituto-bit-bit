@@ -4,9 +4,11 @@
 
 import { html } from '../templates.js';
 
-// A pasta é resolvida a partir deste módulo, o que funciona tanto no
-// desenvolvimento (página em /html/) quanto no build (página na raiz).
-const PASTA = new URL('../../imagens/', import.meta.url).href;
+// A pasta das imagens vem do atributo data-imagens do <html>, relativo à
+// página: "../imagens/" no desenvolvimento e "imagens/" no build, que
+// reescreve esse caminho. Não se usa import.meta.url porque, depois do
+// empacotamento, o módulo muda de pasta e o caminho relativo a ele também.
+const PASTA = new URL(document.documentElement.dataset.imagens, document.baseURI).href;
 
 export function foto({ nome, larguras, tamanhos, largura, altura, alt = '', classe = '', prioritaria = false }) {
   const srcset = larguras.map((l) => `${PASTA}${nome}-${l}.webp ${l}w`).join(', ');
