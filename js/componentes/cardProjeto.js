@@ -27,7 +27,10 @@ export function cardProjeto(projeto, { titulo = 'h3' } = {}) {
         <span class="badge ${categoria.badge}">${categoria.nome}</span>
         <${bruto(titulo)} class="card__titulo">${projeto.titulo}</${bruto(titulo)}>
         <p class="card__texto">${projeto.descricao}</p>
-        <div class="progresso" style="--valor: ${percentual}%"><div class="progresso__barra"></div></div>
+        <div class="progresso" style="--valor: ${percentual}%" role="progressbar"
+          aria-label="Arrecadação de ${projeto.titulo}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percentual}">
+          <div class="progresso__barra"></div>
+        </div>
         <div class="progresso__legenda">
           <span>${formatarMoeda(arrecadado)} de ${formatarMoeda(projeto.meta)}</span>
           <span>${percentual}%</span>
@@ -37,7 +40,7 @@ export function cardProjeto(projeto, { titulo = 'h3' } = {}) {
         <span class="badge ${status.badge}">${status.nome}</span>
         ${concluido
           ? html`<button class="btn btn--primario btn--pequeno" type="button" disabled>Encerrado</button>`
-          : html`<button class="btn btn--primario btn--pequeno" type="button" data-acao="abrir-doacao" data-projeto="${projeto.id}">Apoiar</button>`}
+          : html`<button class="btn btn--primario btn--pequeno" type="button" data-acao="abrir-doacao" data-projeto="${projeto.id}" aria-label="Apoiar o projeto ${projeto.titulo}">Apoiar</button>`}
       </div>
     </article>
   `;
