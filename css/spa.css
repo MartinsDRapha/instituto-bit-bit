@@ -1,0 +1,182 @@
+/* ==========================================================================
+   SPA — estados controlados por JavaScript
+   (as versões :target / :user-invalid continuam valendo sem JS)
+   ========================================================================== */
+
+/* Transição entre páginas -------------------------------------------------- */
+
+#conteudo:focus {
+  outline: none;
+}
+
+.pagina-entrada {
+  animation: pagina-entrada 250ms ease-out;
+}
+
+@keyframes pagina-entrada {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+/* Modal aberto por classe -------------------------------------------------- */
+
+/* Ao abrir, só a opacidade é animada: a visibilidade muda na hora para que
+   o JavaScript consiga mover o foco para dentro do modal. */
+.modal--aberto {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--transicao);
+}
+
+.modal--aberto .modal__caixa {
+  transform: translateY(0);
+}
+
+.modal__fechar {
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+/* Área de toasts (empilha as notificações criadas por JS) ------------------ */
+
+.toast-area {
+  position: fixed;
+  right: var(--espaco-2);
+  bottom: var(--espaco-2);
+  z-index: calc(var(--z-modal) + 1);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-1);
+  width: 22rem;
+  max-width: calc(100% - 2 * var(--espaco-2));
+}
+
+.toast-area .toast {
+  position: static;
+  width: auto;
+  max-width: none;
+  opacity: 1;
+  visibility: visible;
+  animation: toast-entrada 300ms ease-out;
+}
+
+.toast__fechar {
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+/* Validação de formulário feita por JS ------------------------------------- */
+
+.campo--erro .campo__controle {
+  border-color: var(--cor-erro);
+  box-shadow: 0 0 0 3px var(--cor-erro-fundo);
+}
+
+.campo--erro .campo__erro {
+  display: block;
+}
+
+.campo--erro .campo__ajuda {
+  display: none;
+}
+
+.campo--ok .campo__controle {
+  border-color: var(--cor-sucesso);
+}
+
+/* Alternador de tema ------------------------------------------------------- */
+
+.tema-botao {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: none;
+  border: 1px solid var(--cor-borda-forte);
+  border-radius: 50%;
+  color: var(--cor-texto-medio);
+  cursor: pointer;
+  transition: background var(--transicao), color var(--transicao);
+}
+
+.tema-botao:hover {
+  background: var(--cor-realce);
+  color: var(--cor-link);
+}
+
+.tema-botao svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+}
+
+/* Mostra a lua no tema claro e o sol no escuro: o ícone indica o destino */
+.tema-botao__sol,
+[data-tema="escuro"] .tema-botao__lua {
+  display: none;
+}
+
+[data-tema="escuro"] .tema-botao__sol {
+  display: block;
+}
+
+/* O símbolo do logotipo tem fundo branco; no tema escuro vira um selo */
+[data-tema="escuro"] .logo__icone {
+  padding: 2px;
+  background: #ffffff;
+  border-radius: var(--raio-sm);
+}
+
+/* Gráfico (Chart.js) e tabela de apoio ------------------------------------- */
+
+.grafico {
+  position: relative;
+  height: 20rem;
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+.tabela {
+  width: 100%;
+  max-width: 48rem;
+  margin-inline: auto;
+  border-collapse: collapse;
+}
+
+.tabela th,
+.tabela td {
+  padding: var(--espaco-1) var(--espaco-2);
+  border-bottom: 1px solid var(--cor-borda);
+  text-align: left;
+}
+
+/* Lista de cadastros salvos ------------------------------------------------ */
+
+.lista-salvos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-1);
+  padding: 0;
+  list-style: none;
+}
+
+.lista-salvos__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco-1);
+  padding: var(--espaco-1) var(--espaco-2);
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-md);
+  font-size: var(--texto-sm);
+}
+
+.lista-salvos__nome {
+  display: block;
+  font-weight: var(--peso-forte);
+}
