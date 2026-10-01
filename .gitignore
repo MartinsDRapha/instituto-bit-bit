@@ -1,0 +1,12 @@
+# Dependências e saída de build
+node_modules/
+dist/
+
+# Configuração local de ferramentas e do sistema
+.claude/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Variáveis de ambiente
+.env
