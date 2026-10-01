@@ -1,0 +1,15 @@
+{
+  "name": "instituto-bit-a-bit",
+  "version": "1.0.0",
+  "description": "Plataforma web de uma ONG fictícia de educação técnica em informática",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/servidor.mjs . 5500",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/servidor.mjs dist 4173"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}
