@@ -317,6 +317,14 @@
     visibility: visible;
     transform: translateY(0);
   }
+
+  /* Fechado pela tecla Esc (js/ui/menu.js): permanece oculto mesmo com o
+     ponteiro ou o foco ainda sobre o item (WCAG 1.4.13). */
+  .nav__item.nav__item--recolhido:hover > .submenu,
+  .nav__item.nav__item--recolhido:focus-within > .submenu {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 /* Hero --------------------------------------------------------------------- */

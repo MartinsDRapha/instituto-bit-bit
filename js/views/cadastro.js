@@ -20,7 +20,7 @@ function campo({ nome, rotulo, tipo = 'text', classe = '', ajuda = '', obrigator
       <input class="campo__controle" type="${tipo}" id="${nome}" name="${nome}"
         aria-describedby="erro-${nome}" ${obrigatorio ? html`aria-required="true"` : ''} ${extras}>
       ${ajuda && html`<span class="campo__ajuda">${ajuda}</span>`}
-      <span class="campo__erro" id="erro-${nome}" data-erro-de="${nome}" role="alert"></span>
+      <span class="campo__erro" id="erro-${nome}" data-erro-de="${nome}"></span>
     </div>
   `;
 }
@@ -90,7 +90,7 @@ function pagina() {
                       <option value="">Selecione</option>
                       ${ESTADOS.map((uf) => html`<option>${uf}</option>`)}
                     </select>
-                    <span class="campo__erro" id="erro-estado" data-erro-de="estado" role="alert"></span>
+                    <span class="campo__erro" id="erro-estado" data-erro-de="estado"></span>
                   </div>
                 </div>
               </fieldset>
@@ -105,7 +105,7 @@ function pagina() {
                         <label class="opcao"><input class="opcao__controle" type="checkbox" name="area" value="${id}">${categoria.nome}</label>
                       `
                     )}
-                    <span class="campo__erro" id="erro-area" data-erro-de="area" role="alert"></span>
+                    <span class="campo__erro" id="erro-area" data-erro-de="area"></span>
                   </div>
                   <div class="campo col-md-6" role="radiogroup" aria-labelledby="rotulo-turno" aria-describedby="erro-turno" aria-required="true">
                     <span class="campo__rotulo campo__rotulo--obrigatorio" id="rotulo-turno">Turno disponível</span>
@@ -114,13 +114,13 @@ function pagina() {
                         <label class="opcao"><input class="opcao__controle" type="radio" name="turno" value="${id}">${nome}</label>
                       `
                     )}
-                    <span class="campo__erro" id="erro-turno" data-erro-de="turno" role="alert"></span>
+                    <span class="campo__erro" id="erro-turno" data-erro-de="turno"></span>
                   </div>
                   <div class="campo">
                     <label class="campo__rotulo" for="mensagem">Conte sobre sua experiência com tecnologia</label>
                     <textarea class="campo__controle" id="mensagem" name="mensagem" aria-describedby="erro-mensagem"></textarea>
                     <span class="campo__ajuda">Opcional. <span id="contador-mensagem">0</span>/500 caracteres.</span>
-                    <span class="campo__erro" id="erro-mensagem" data-erro-de="mensagem" role="alert"></span>
+                    <span class="campo__erro" id="erro-mensagem" data-erro-de="mensagem"></span>
                   </div>
                 </div>
               </fieldset>
@@ -130,7 +130,7 @@ function pagina() {
                   <input class="opcao__controle" type="checkbox" name="termos" aria-required="true" aria-describedby="erro-termos">
                   <span>Li e aceito o termo de voluntariado e a política de privacidade.</span>
                 </label>
-                <span class="campo__erro" id="erro-termos" data-erro-de="termos" role="alert"></span>
+                <span class="campo__erro" id="erro-termos" data-erro-de="termos"></span>
               </div>
 
               <div class="form__acoes">
