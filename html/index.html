@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Instituto Bit a Bit: educação técnica gratuita em informática para jovens e adultos de comunidades periféricas.">
+  <title>Instituto Bit a Bit</title>
+  <link rel="icon" href="../imagens/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/main.css">
+  <script src="../js/tema-inicial.js"></script>
+  <script type="module" src="../js/main.js"></script>
+</head>
+<body>
+  <a class="u-pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="header">
+    <div class="container header__conteudo">
+      <a class="logo" href="#/">
+        <img class="logo__icone" src="../imagens/logo-simbolo.png" width="284" height="200" alt="">
+        Instituto Bit a Bit
+      </a>
+
+      <button class="nav__botao" type="button" id="nav-botao" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-principal">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="nav-principal" aria-label="Navegação principal">
+        <ul class="nav__lista">
+          <li class="nav__item"><a class="nav__link" href="#/" data-rota="/">Início</a></li>
+          <li class="nav__item">
+            <a class="nav__link nav__link--submenu" href="#/projetos" data-rota="/projetos">Projetos</a>
+            <ul class="submenu">
+              <li><a class="submenu__link" href="#/projetos?categoria=programacao">Programação</a></li>
+              <li><a class="submenu__link" href="#/projetos?categoria=infraestrutura">Hardware e redes</a></li>
+              <li><a class="submenu__link" href="#/projetos?categoria=inclusao-digital">Inclusão digital</a></li>
+            </ul>
+          </li>
+          <li class="nav__item"><a class="nav__link" href="#/sobre" data-rota="/sobre">Sobre</a></li>
+          <li class="nav__item"><a class="nav__link" href="#/cadastro" data-rota="/cadastro">Seja voluntário</a></li>
+          <li class="nav__item">
+            <button class="tema-botao" type="button" id="tema-botao" aria-label="Ativar tema escuro" aria-pressed="false">
+              <svg class="tema-botao__lua" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.4 5.4 0 0 1-4.4 2.26 5.4 5.4 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+              <svg class="tema-botao__sol" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zM2 13h2a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2zm18 0h2a1 1 0 0 0 0-2h-2a1 1 0 0 0 0 2zM11 2v2a1 1 0 0 0 2 0V2a1 1 0 0 0-2 0zm0 18v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-2 0zM5.99 4.58a1 1 0 0 0-1.41 1.41l1.06 1.06a1 1 0 0 0 1.41-1.41L5.99 4.58zm12.37 12.37a1 1 0 0 0-1.41 1.41l1.06 1.06a1 1 0 0 0 1.41-1.41l-1.06-1.06zm1.06-10.96a1 1 0 0 0-1.41-1.41l-1.06 1.06a1 1 0 0 0 1.41 1.41l1.06-1.06zM7.05 18.36a1 1 0 0 0-1.41-1.41l-1.06 1.06a1 1 0 0 0 1.41 1.41l1.06-1.06z"/></svg>
+            </button>
+          </li>
+          <li class="nav__item"><button class="btn btn--secundario btn--pequeno" type="button" data-acao="abrir-doacao">Doar agora</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- As páginas são renderizadas aqui pelo roteador (js/router.js) -->
+  <main id="conteudo" tabindex="-1">
+    <noscript>
+      <section class="secao">
+        <div class="container">
+          <div class="alerta alerta--aviso">
+            <div><strong class="alerta__titulo">JavaScript desativado</strong>Este site precisa de JavaScript para exibir o conteúdo.</div>
+          </div>
+        </div>
+      </section>
+    </noscript>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="grid">
+        <div class="col-md-6 col-lg-4">
+          <h2 class="footer__titulo">Instituto Bit a Bit</h2>
+          <p>CNPJ 00.000.000/0001-00<br>Rua dos Circuitos, 404 — São Paulo, SP</p>
+        </div>
+        <div class="col-6 col-md-3 col-lg-4">
+          <h2 class="footer__titulo">Navegação</h2>
+          <ul class="footer__lista">
+            <li><a href="#/">Início</a></li>
+            <li><a href="#/projetos">Projetos</a></li>
+            <li><a href="#/cadastro">Seja voluntário</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-3 col-lg-4">
+          <h2 class="footer__titulo">Contato</h2>
+          <ul class="footer__lista">
+            <li><a href="mailto:contato@bitabit.example">contato@bitabit.example</a></li>
+            <li><a href="tel:+551130000000">(11) 3000-0000</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__base u-mb-0">© 2026 Instituto Bit a Bit. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal-doacao" role="dialog" aria-modal="true" aria-labelledby="doacao-titulo">
+    <div class="modal__fundo" data-acao="fechar-modal"></div>
+    <div class="modal__caixa">
+      <button class="modal__fechar" type="button" data-acao="fechar-modal" aria-label="Fechar">&times;</button>
+      <h2 id="doacao-titulo">Faça sua doação</h2>
+      <p class="u-texto-suave">100% do valor é destinado aos cursos e laboratórios.</p>
+      <form id="form-doacao">
+        <div class="campo u-mb-2">
+          <label class="campo__rotulo" for="doacao-projeto">Projeto</label>
+          <select class="campo__controle" id="doacao-projeto" name="projeto"></select>
+        </div>
+        <fieldset class="form__grupo u-mb-0">
+          <legend class="campo__rotulo">Valor</legend>
+          <div class="valores">
+            <label class="valores__opcao"><input type="radio" name="valor" value="25"><span>R$ 25</span></label>
+            <label class="valores__opcao"><input type="radio" name="valor" value="50" checked><span>R$ 50</span></label>
+            <label class="valores__opcao"><input type="radio" name="valor" value="100"><span>R$ 100</span></label>
+            <label class="valores__opcao"><input type="radio" name="valor" value="250"><span>R$ 250</span></label>
+          </div>
+        </fieldset>
+        <button class="btn btn--secundario btn--bloco" type="submit">Confirmar doação</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast-area" id="toast-area" aria-live="polite"></div>
+</body>
+</html>
