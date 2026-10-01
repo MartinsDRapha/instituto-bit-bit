@@ -65,6 +65,13 @@
   border-bottom: 1px solid #ffffff;
 }
 
+/* A foto do banner fica sob o texto; neste tema ela é ocultada para manter
+   o fundo preto sólido. As fotos dos cards não têm texto sobreposto. */
+[data-tema="contraste"] .hero__foto,
+[data-tema="contraste"] .hero--com-foto::after {
+  display: none;
+}
+
 /* Ações principais: amarelo sobre preto invertido (texto preto, 19,6:1) */
 [data-tema="contraste"] .btn--primario,
 [data-tema="contraste"] .btn--secundario,

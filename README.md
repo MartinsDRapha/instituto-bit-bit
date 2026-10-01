@@ -52,9 +52,19 @@ O build gera a pasta `dist/`, que é o que vai para a hospedagem, e `npm run pre
 | CSS | Reúne os 8 arquivos em um e minifica |
 | HTML | Coloca o `index.html` na raiz de `dist/`, ajusta os caminhos e minifica (remove comentários e espaços) |
 | Cache | Acrescenta `?v=<hash>` aos arquivos; o endereço muda quando o conteúdo muda |
-| Imagens | Copia apenas as usadas; o PNG é recomprimido e convertido para WebP, servido por `<picture>` com o PNG como reserva |
+| Imagens | Copia as fotos já otimizadas; o logotipo em PNG é recomprimido e convertido para WebP, servido por `<picture>` com o PNG como reserva |
 
 O Chart.js continua sendo carregado do CDN sob demanda e não entra no pacote.
+
+### Fotos
+
+As fotos originais ficam em `imagens/originais/`. Ao adicionar ou trocar uma, gere as versões otimizadas:
+
+```bash
+npm run imagens
+```
+
+Cada foto sai em WebP, em mais de uma largura, e em um JPEG de reserva. Na página, elas usam `<picture>` com `srcset` e `sizes`, para o navegador baixar o tamanho adequado à tela (um card em celular ou desktop comum recebe um arquivo de cerca de 10 kB). As fotos dos cards têm `loading="lazy"`; a do banner é pré-carregada com prioridade alta. Todas declaram largura e altura, o que evita saltos de layout.
 
 ## Estrutura
 
@@ -73,6 +83,7 @@ O Chart.js continua sendo carregado do CDN sob demanda e não entra no pacote.
 ├── imagens/
 ├── scripts/
 │   ├── build.mjs           gera a versão de produção em dist/
+│   ├── imagens.mjs         gera as versões otimizadas das fotos
 │   └── servidor.mjs        servidor estático para desenvolvimento e preview
 └── js/
     ├── main.js             ponto de entrada
@@ -195,6 +206,22 @@ Tipos usados: `feat`, `fix`, `docs`, `perf`, `build`, `ci` e `chore`. Exemplo: `
 Antes de aprovar um pull request, confira o diff e verifique se o site abre sem erros no console, se a navegação por teclado funciona e se `npm run build` conclui.
 
 As versões seguem o [versionamento semântico](https://semver.org/lang/pt-BR/). Os primeiros commits do projeto usaram branches com os prefixos `feat/`, `fix/`, `docs/` e `ci/`, mescladas direto na `main`; o GitFlow foi adotado a partir da versão 1.0.0.
+
+## Créditos das imagens
+
+Fotos do [Unsplash](https://unsplash.com/), usadas sob a [licença Unsplash](https://unsplash.com/license).
+
+| Uso | Autor |
+|---|---|
+| Banner da página inicial | [Poddar Group of Institutions](https://unsplash.com/photos/ereEoYDIl20) |
+| Primeiro Código | [Mohammad Rahmani](https://unsplash.com/photos/oXlXu2qukGE) |
+| Dev Delas | [ThisisEngineering](https://unsplash.com/photos/64YrPKiguAE) |
+| Bancada Aberta | [JESHOOTS.COM](https://unsplash.com/photos/sMKUYIasyDM) |
+| Recicla Tech | [Mert Kahveci](https://unsplash.com/photos/SsDZRqcCfSo) |
+| Conecta 60+ | [Vitaly Gariev](https://unsplash.com/photos/cMsdRjEApeo) |
+| Lab na Escola | [RUT MIIT](https://unsplash.com/photos/Y6hwl3U1oiU) |
+
+As pessoas retratadas não têm relação com o projeto, que é fictício.
 
 ## Autoria
 
